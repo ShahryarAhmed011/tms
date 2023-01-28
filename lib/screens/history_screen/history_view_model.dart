@@ -8,7 +8,7 @@ class HistoryViewModel extends BaseVM{
   List<Task> taskList = [];
 
   HistoryViewModel(){
-   //initialize();
+   initialize();
   }
 
   initialize() async {

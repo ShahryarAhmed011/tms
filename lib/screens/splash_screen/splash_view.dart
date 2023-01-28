@@ -14,7 +14,6 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
       builder: (context, model, child) {
-        model.navigate();
         return Scaffold(
           body: Column(
             mainAxisSize: MainAxisSize.max,

@@ -194,6 +194,21 @@ class _$TaskDao extends TaskDao {
                   'timeSpent': item.timeSpent,
                   'mIndex': item.mIndex
                 },
+            changeListener),
+        _taskDeletionAdapter = DeletionAdapter(
+            database,
+            'Task',
+            ['id'],
+            (Task item) => <String, Object?>{
+                  'id': item.id,
+                  'groupId': item.groupId,
+                  'groupName': item.groupName,
+                  'taskTitle': item.taskTitle,
+                  'startTime': item.startTime,
+                  'endTime': item.endTime,
+                  'timeSpent': item.timeSpent,
+                  'mIndex': item.mIndex
+                },
             changeListener);
 
   final sqflite.DatabaseExecutor database;
@@ -205,6 +220,8 @@ class _$TaskDao extends TaskDao {
   final InsertionAdapter<Task> _taskInsertionAdapter;
 
   final UpdateAdapter<Task> _taskUpdateAdapter;
+
+  final DeletionAdapter<Task> _taskDeletionAdapter;
 
   @override
   Future<List<Task>> getAllTasks() async {
@@ -277,7 +294,13 @@ class _$TaskDao extends TaskDao {
   }
 
   @override
-  Future<void> updateTask(Task task) async {
-    await _taskUpdateAdapter.update(task, OnConflictStrategy.abort);
+  Future<int> updateTask(Task task) {
+    return _taskUpdateAdapter.updateAndReturnChangedRows(
+        task, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> deleteTasks(List<Task> tasks) async {
+    await _taskDeletionAdapter.deleteList(tasks);
   }
 }

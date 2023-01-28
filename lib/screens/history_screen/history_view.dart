@@ -11,31 +11,33 @@ class HistoryView extends StatelessWidget {
     return ViewModelBuilder<HistoryViewModel>.reactive(
       builder: (context, model, child) {
         return Scaffold(
-          body: Container()
-          /*ListView.builder(
-            itemCount: model.taskList.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: const Color(0xff764abc),
-                  child: Text(model.taskList![index].taskTitle!),
-                ),
-                title: Text('Task ${model.taskList![index].taskTitle!}'),
-                subtitle: Column(
-                  children: [
-                    const SizedBox(height: 4),
-                    (model.taskList[index].startTime!=null)?
-                    Align(alignment: Alignment.bottomLeft,child: Text('Start Time: ${model.appUtil.format(model.taskList[index].startTime!)}')):
-                    Container(),
-                    const SizedBox(height: 4),
-                    (model.taskList[index].timeSpent!=null)?
-                    Align(alignment: Alignment.bottomLeft,child: Text('Spend Time: ${model.taskList[index].timeSpent}')):
-                    Align(alignment: Alignment.bottomLeft,child: Text('Spend Time: ${model.appUtil.measureTotal(model.taskList[index].startTime!)}')),
-                    const SizedBox(height: 4),
-                  ],
-                ),
-              );
-            }, )*/,
+          body: Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: ListView.builder(
+              itemCount: model.taskList.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: const Color(0xff764abc),
+                    child: Text(model.taskList![index].taskTitle!),
+                  ),
+                  title: Text('Task ${model.taskList![index].taskTitle!}'),
+                  subtitle: Column(
+                    children: [
+                      const SizedBox(height:4),
+                      (model.taskList[index].startTime!=null)?
+                      Align(alignment: Alignment.bottomLeft,child: Text('Start Time: ${model.appUtil.format(model.taskList[index].startTime!)}')):
+                      Container(),
+                      const SizedBox(height: 4),
+                      (model.taskList[index].timeSpent!=null)?
+                      Align(alignment: Alignment.bottomLeft,child: Text('Spend Time: ${model.taskList[index].timeSpent}')):
+                      Align(alignment: Alignment.bottomLeft,child: Text('Spend Time: ${model.appUtil.measureTotal(model.taskList[index].startTime!)}')),
+                      const SizedBox(height: 4),
+                    ],
+                  ),
+                );
+              }, ),
+          ),
           );
       },
       viewModelBuilder: () => HistoryViewModel(),
