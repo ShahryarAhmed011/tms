@@ -2,6 +2,7 @@ import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/material.dart';
 import 'package:tms/screens/kanban_board_screen/kamban_board_view_model.dart';
 import 'package:tms/utils/app_colors.dart';
+import 'package:tms/utils/app_util.dart';
 
 class FlowyGroupHeader extends StatelessWidget {
   final KanbanBoardViewModel model;
@@ -18,6 +19,15 @@ class FlowyGroupHeader extends StatelessWidget {
     return buildAppFlowyGroupHeader(context,columnData,model);
   }
 
+  /// This function builds the AppFlowyGroupHeader for the Kanban board.
+  /// It takes in the `BuildContext`, `AppFlowyGroupData<dynamic>` and `KanbanBoardViewModel` as arguments.
+  /// The function returns an `AppFlowyGroupHeader` widget with the following properties:
+  /// `onAddButtonClick` - calls the `_displayTextInputDialog` function when the add button is clicked
+  /// `icon` - icon displayed on the header
+  /// `title` - title of the group
+  /// `addIcon` - add icon displayed on the header
+  /// `height` - height of the header
+  /// `margin` - margin of the header
   AppFlowyGroupHeader buildAppFlowyGroupHeader(BuildContext context,
       AppFlowyGroupData<dynamic> columnData, KanbanBoardViewModel model) {
     return AppFlowyGroupHeader(
@@ -35,15 +45,19 @@ class FlowyGroupHeader extends StatelessWidget {
         ),
       ),
       addIcon: (columnData.headerData.groupName == 'In Progress' ||
-          columnData.headerData.groupName == 'Done')
+              columnData.headerData.groupName == 'Done')
           ? Container()
           : const Icon(Icons.add, size: 30),
       height: 60,
-      margin: model.config.groupItemPadding,
+      margin: AppUtil().boardConfig.groupItemPadding,
     );
   }
 
-
+  /// _displayTextInputDialog is a function that displays a text input dialog where the user can enter a task name
+  /// It takes in 3 parameters:
+  /// 1. BuildContext context: the context of the widget where the dialog will be shown
+  /// 2. AppFlowyGroupData<dynamic> columnData: data of the column where the task will be created
+  /// 3. KanbanBoardViewModel model: the view model that will handle the creation of the task
   Future<void> _displayTextInputDialog(BuildContext context,
       AppFlowyGroupData<dynamic> columnData, KanbanBoardViewModel model) async {
     String inputText = "";
@@ -82,6 +96,7 @@ class FlowyGroupHeader extends StatelessWidget {
         });
   }
 
+  /// Function to create button style for dialog
   ButtonStyle dialogButtonStyle() {
     return TextButton.styleFrom(
       backgroundColor: AppColors.secondaryThemeColor,

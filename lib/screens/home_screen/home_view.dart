@@ -3,6 +3,8 @@ import 'package:stacked/stacked.dart';
 import 'package:tms/screens/home_screen/home_view_model.dart';
 import 'package:tms/utils/app_colors.dart';
 
+import '../../models/project.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -10,6 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       builder: (context, model, child) {
+
         return Scaffold(
             appBar: AppBar(
               backgroundColor: AppColors.primaryThemeColor,

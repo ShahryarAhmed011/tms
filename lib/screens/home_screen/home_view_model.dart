@@ -15,6 +15,10 @@ class HomeViewModel extends BaseVM {
 
   HomeViewModel() {
     initialize();
+
+    Future.delayed(Duration(seconds: 2),(){
+      Get.to(TaskBoardView(), arguments: ["First data", "Second data"]);
+    });
   }
 
   initialize() async{

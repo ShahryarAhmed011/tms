@@ -1,4 +1,6 @@
+import 'package:appflowy_board/appflowy_board.dart';
 import 'package:intl/intl.dart';
+import 'package:tms/utils/app_colors.dart';
 
 class AppUtil {
   static final AppUtil _singleton = AppUtil._internal();
@@ -28,4 +30,10 @@ class AppUtil {
   int currentMillisecondsSinceEpoch(){
     return DateTime.now().millisecondsSinceEpoch;
   }
+
+  final boardConfig = const AppFlowyBoardConfig(
+      groupBackgroundColor: AppColors.boardColor
+  );
+
+
 }

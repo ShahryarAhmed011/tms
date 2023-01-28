@@ -1,19 +1,23 @@
 import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-import 'package:tms/models/task.dart';
 import 'package:tms/models/task.dart';
 import 'package:tms/screens/kanban_board_screen/kamban_board_view_model.dart';
 import 'package:tms/utils/app_colors.dart';
-
 import 'rich_text_item.dart';
 
+/// A `RichTextCard` is a [StatefulWidget] that represents a [RichTextItem].
+/// It is used to display information about a task and provide the ability to edit it.
 class RichTextCard extends StatefulWidget {
   final RichTextItem item;
   final KanbanBoardViewModel model;
   final AppFlowyGroupData group;
 
+  /// Creates a new `RichTextCard` instance.
+  ///
+  /// The `item` parameter is the task that this card represents.
+  /// The `model` parameter is the view model that contains the data for the card.
+  /// The `group` parameter is the data for the group that this task belongs to.
   const RichTextCard({
     required this.item,
     required this.model,
@@ -25,6 +29,7 @@ class RichTextCard extends StatefulWidget {
   State<RichTextCard> createState() => _RichTextCardState();
 }
 
+// The state for a `RichTextCard`.
 class _RichTextCardState extends State<RichTextCard> {
   late Task? task;
   //late Task Task;
@@ -35,21 +40,20 @@ class _RichTextCardState extends State<RichTextCard> {
 
   }
 
+  /// Fetches the task data from the view model.
   getTask() async{
     int? i = widget.model.controller.getGroupController(widget.group.id)?.groupData.items.indexOf(widget.item);
     if(i!=null){
       task = await widget.model.getTask(widget.group.id, i);
     }
-   }
+  }
 
+
+  /// This function returns a widget that displays a list item with an edit button, title, and start time and time spent (if applicable).
+  /// The item's title and start time are passed in through the `widget` property.
+  /// The `context` is also passed in to allow for access to the theme and localization of the app.
   @override
   Widget build(BuildContext context)  {
-    //  int? i = widget.model.controller.getGroupController(widget.group.id)?.groupData.items.indexOf(widget.item);
-    //  Task task = widget.model.taskList[i??0];
-    //widget.model.getTask(widget.item);
-
-
-
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -105,6 +109,9 @@ class _RichTextCardState extends State<RichTextCard> {
     );
   }
 
+  /// This method builds the `Edit` button for the task.
+  /// It takes in the [BuildContext] and returns a [Row] widget.
+  /// On tap, it calls the _displayTextInputDialog method to display the input dialog.
   Row buildEditButton(BuildContext context) {
     return Row(children: [
       Expanded(
@@ -124,6 +131,12 @@ class _RichTextCardState extends State<RichTextCard> {
     ]);
   }
 
+  /// This function shows a dialog which allows user to update task
+  ///
+  /// It takes in 3 parameters - context, columnData, and model.
+  /// columnData is of type AppFlowyGroupData<dynamic> and it holds the data of the current column.
+  /// model is of type KanbanBoardViewModel and it holds the logic to update task.
+  /// task is of type Task
   Future<void> _displayTextInputDialog(
     BuildContext context,
     AppFlowyGroupData<dynamic> columnData,
@@ -167,6 +180,7 @@ class _RichTextCardState extends State<RichTextCard> {
         });
   }
 
+  /// Function to create button style for dialog
   ButtonStyle dialogButtonStyle() {
     return TextButton.styleFrom(
       backgroundColor: AppColors.secondaryThemeColor,

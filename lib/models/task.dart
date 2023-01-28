@@ -1,5 +1,7 @@
 import 'package:floor/floor.dart';
 
+
+///Task entity class
 @entity
 class Task{
   @PrimaryKey(autoGenerate: true)

@@ -10,7 +10,7 @@ class TaskBoardView extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Widget> bottomNavItems = [
-    const KanbanBoardView(),
+    KanbanBoardView(),
     const HistoryView(),
   ];
 

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stacked/stacked.dart';
-import 'package:tms/constants/strings.dart';
+import 'package:tms/core/constants/strings.dart';
 import 'package:tms/screens/splash_screen/splash_view_model.dart';
 import 'package:tms/utils/app_colors.dart';
 
@@ -14,7 +14,7 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
       builder: (context, model, child) {
-
+        model.navigate();
         return Scaffold(
           body: Column(
             mainAxisSize: MainAxisSize.max,
@@ -29,7 +29,6 @@ class SplashView extends StatelessWidget {
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(100),
                       ),
-
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,

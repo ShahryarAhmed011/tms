@@ -1,8 +1,12 @@
+import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:stacked/stacked.dart';
+import 'package:tms/core/base/base_repository.dart';
+import 'package:tms/core/base/base_view_model.dart';
 import 'package:tms/screens/home_screen/home_view.dart';
 
-class SplashViewModel extends BaseViewModel {
+
+class SplashViewModel extends BaseVM {
+
   final String _title = 'Home View';
   String get title => _title;
   int _counter = 0;
@@ -14,8 +18,8 @@ class SplashViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  navigate() {
-    Future.delayed(const Duration(seconds: 0),(){
+  navigate()  {
+    Future.delayed(const Duration(seconds: 0),() async{
       Get.offAll(HomeView());
     });
   }

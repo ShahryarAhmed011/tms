@@ -6,4 +6,5 @@ class AppColors {
   static const primaryTextColor = Color(0xffffffff);
   static const secondaryTextColor = Color(0xff231273);
   static const headingTextColor = Color(0xff748090);
+  static const boardColor = Color(0xfff4f5f7);
 }

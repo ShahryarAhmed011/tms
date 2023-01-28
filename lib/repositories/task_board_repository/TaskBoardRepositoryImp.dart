@@ -34,21 +34,6 @@ class TaskBoardRepositoryImp extends TaskBoardRepository{
     }
     listOfLists.add(list);
     exportCSV.myCSV(row, listOfLists);
-
-
-
-/*      rows.add(row);
-
-    String csv =  ListToCsvConverter().convert(rows);
-
-    String dir = await ExtStorage.getExternalStoragePublicDirectory(
-        ExtStorage.DIRECTORY_DOWNLOADS);
-    print("dir $dir");
-    String file = "$dir";
-
-    File f = File(file + "/filename.csv");
-
-    f.writeAsString(csv);*/
   }
 
 

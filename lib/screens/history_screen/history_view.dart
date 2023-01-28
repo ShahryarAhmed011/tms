@@ -11,7 +11,8 @@ class HistoryView extends StatelessWidget {
     return ViewModelBuilder<HistoryViewModel>.reactive(
       builder: (context, model, child) {
         return Scaffold(
-          body: ListView.builder(
+          body: Container()
+          /*ListView.builder(
             itemCount: model.taskList.length,
             itemBuilder: (context, index) {
               return ListTile(
@@ -34,7 +35,7 @@ class HistoryView extends StatelessWidget {
                   ],
                 ),
               );
-            }, ),
+            }, )*/,
           );
       },
       viewModelBuilder: () => HistoryViewModel(),

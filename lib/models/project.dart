@@ -1,5 +1,7 @@
 import 'package:floor/floor.dart';
 
+
+///Project entity class
 @entity
 class Project {
   @PrimaryKey(autoGenerate: true)
