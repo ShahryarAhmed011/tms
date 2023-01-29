@@ -12,6 +12,9 @@ class SplashViewModel extends BaseVM {
   int _counter = 0;
   int get counter => _counter;
 
+  /// This function updates the value of the _counter variable by increasing it by 1
+  /// and notifying all the listeners.
+  /// It also introduces a delay of 2 seconds before notifying the listeners.
   void updateCounter() {
     _counter++;
     Future.delayed(const Duration(seconds: 2));

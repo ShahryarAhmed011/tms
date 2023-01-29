@@ -14,6 +14,11 @@ class TaskBoardView extends StatelessWidget {
     const HistoryView(),
   ];
 
+  ///This function is a build method that is being overridden from the StatefulWidget class. It returns a Scaffold widget that is used to create the layout of the screen. The Scaffold widget contains an AppBar widget with a title and an action button, a Container widget for the body and a BottomNavigationBar widget for navigation.
+  ///The AppBar has a background color of AppColors.primaryThemeColor and the title is dynamic, it is obtained from the TaskBoardViewModel class by calling model.appBarTitle. The action button is a InkWell widget that when pressed, it calls the isTaskExist and exportCSV method of the TaskBoardViewModel class. If the result of isTaskExist is true, it shows a SnackBar with the message obtained from the exportCSV method, otherwise it shows a SnackBar with the message "No task available".
+  ///The body of the Scaffold is a Container widget with a color of Colors.white and the child is obtained from the bottomNavItems list using the index obtained from the TaskBoardViewModel class by calling model.navItemIndex.
+  ///The BottomNavigationBar is a ClipRRect widget with a border radius and a shadow. It has a background color of AppColors.primaryThemeColor, it shows selected and unselected labels, it has unselected and selected item color of AppColors.primaryTextColor. The current index of the selected item is obtained from the TaskBoardViewModel class by calling model.navItemIndex. The items are two BottomNavigationBarItem widgets with icons and labels. When an item is tapped, it calls the navigateTo method of the TaskBoardViewModel class passing the index as parameter.
+  ///The ViewModelBuilder widget is used to create and handle the TaskBoardViewModel instance. It calls the viewModelBuilder function passing () => TaskBoardViewModel() as parameter.
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TaskBoardViewModel>.reactive(

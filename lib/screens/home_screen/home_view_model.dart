@@ -18,9 +18,13 @@ class HomeViewModel extends BaseVM {
 
   }
 
-  initialize() async{
+  /// Method to initialize the project list and update the loading status
+  initialize() async {
+    /// Get the project list from the repository
     projectList = await repository.getProjects();
+    /// Update the loading status to false
     _isLoading = false;
+    /// Notify the listeners to update the UI
     notifyListeners();
   }
 

@@ -8,12 +8,13 @@ class HistoryViewModel extends BaseVM{
   List<Task> taskList = [];
 
   HistoryViewModel(){
-   initialize();
+    initialize();
   }
 
+  ///Initialize the taskList by calling the getAllTasksByGroupId method from the repository and passing 'Done' as an argument
+  ///Then notify the listeners of changes
   initialize() async {
     taskList = await repository.getAllTasksByGroupId('Done');
     notifyListeners();
   }
-
 }

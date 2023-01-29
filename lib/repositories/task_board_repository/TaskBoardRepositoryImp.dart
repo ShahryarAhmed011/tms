@@ -11,6 +11,10 @@ class TaskBoardRepositoryImp extends TaskBoardRepository{
     return taskList;
   }
 
+///  overrides a method called exportList. The function begins by asynchronously fetching a list of tasks from a database using the taskDao.getAllTasks() method. The function is marked with @override annotation which indicates that this function is intended to override a function with the same name in a parent class or in an interface.
+///  Next, the function creates a list called row and adds the headers "Index", "Title", "Group Id", "Start Time", and "Spent Time" to it. This list will be used as the headers for a CSV file that will be exported later on.
+///  Then, the function creates an empty list called listOfLists and another empty list called list. The function then uses a for loop to iterate over each task in the taskList and adds the task's properties to the list such as task.id, task.taskTitle, task.groupId, task.startTime and task.startTime by calling AppUtil() function which format and measure total time.
+///  Finally, the list is added to listOfLists and the exportCSV.myCSV(row, listOfLists) method is called to export the CSV file with headers from row and data from listOfLists.
   @override
   exportList() async {
     List<Task> taskList =  await (await database).taskDao.getAllTasks();
@@ -35,7 +39,5 @@ class TaskBoardRepositoryImp extends TaskBoardRepository{
     listOfLists.add(list);
     exportCSV.myCSV(row, listOfLists);
   }
-
-
 
 }

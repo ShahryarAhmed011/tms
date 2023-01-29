@@ -36,10 +36,12 @@ class SplashView extends StatelessWidget {
                       children: [
                         const SizedBox(height: 100,),
                         Center(
+                          ///Lottie animation to play animation from json file
                           child: Lottie.asset('assets/animations/tms.json',height: 300,),
                         ),
                         const SizedBox(height: 30,),
-                        animatedTagLine()
+                        ///animatedTagLine is a function which returns a widget
+                      animatedTagLine()
                       ],
                     ),
                   ),
@@ -48,8 +50,10 @@ class SplashView extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: Center(
+
                     child: InkWell(
-                      onTap: () {
+                      ///onTap is used to navigate to next screen
+                    onTap: () {
                         model.navigate();
                       },
                       child: Container(
@@ -70,11 +74,14 @@ class SplashView extends StatelessWidget {
           ),
         );
       },
-
+      ///ViewModelBuilder is used to create the viewmodel object and pass it to the builder function
       viewModelBuilder: () => SplashViewModel(),
     );
   }
 
+  /// This function creates and returns an animated tagline in the form of
+  /// [AnimatedTextKit] widget. The animation is a typewriter animation
+  /// with a text [Strings.appTagLine] and speed of 100 milliseconds.
   Widget animatedTagLine(){
     return Center(
       child: SizedBox(
